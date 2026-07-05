@@ -86,7 +86,7 @@ fun SplashScreen(onFinished: () -> Unit) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = "David Arsénio Martins",
+                text = "Developed by David Arsénio Martins",
                 color = Color.White.copy(alpha = 0.65f),
                 fontWeight = FontWeight.Medium,
                 fontSize = 13.sp
