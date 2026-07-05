@@ -3,7 +3,6 @@ package com.shoppinglisthome.app.data
 import android.content.Context
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
-import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -16,7 +15,6 @@ class SettingsRepository(private val context: Context) {
 
     private object Keys {
         val THEME = intPreferencesKey("theme_preference")
-        val LANGUAGE = stringPreferencesKey("language_preference")
     }
 
     val theme: Flow<ThemePreference> = context.dataStore.data.map { prefs ->
@@ -27,10 +25,6 @@ class SettingsRepository(private val context: Context) {
         }
     }
 
-    val language: Flow<String> = context.dataStore.data.map { prefs ->
-        prefs[Keys.LANGUAGE] ?: "pt"
-    }
-
     suspend fun setTheme(theme: ThemePreference) {
         context.dataStore.edit { prefs ->
             prefs[Keys.THEME] = when (theme) {
@@ -39,9 +33,5 @@ class SettingsRepository(private val context: Context) {
                 ThemePreference.DARK -> 2
             }
         }
-    }
-
-    suspend fun setLanguage(code: String) {
-        context.dataStore.edit { prefs -> prefs[Keys.LANGUAGE] = code }
     }
 }

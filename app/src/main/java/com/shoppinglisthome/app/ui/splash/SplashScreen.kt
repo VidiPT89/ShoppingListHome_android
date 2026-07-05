@@ -4,8 +4,10 @@ import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
@@ -43,33 +45,58 @@ fun SplashScreen(onFinished: () -> Unit) {
         onFinished()
     }
 
-    Column(
+    Box(
         modifier = Modifier
             .fillMaxSize()
             .background(Brush.verticalGradient(listOf(SplashGradientTop, SplashGradientBottom)))
-            .alpha(alpha),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+            .alpha(alpha)
     ) {
-        Icon(
-            imageVector = Icons.Filled.ShoppingCart,
-            contentDescription = null,
-            tint = Color.White,
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            Icon(
+                imageVector = Icons.Filled.ShoppingCart,
+                contentDescription = null,
+                tint = Color.White,
+                modifier = Modifier
+                    .size(72.dp)
+                    .padding(bottom = 24.dp)
+            )
+            Text(
+                text = stringResource(R.string.app_name),
+                color = Color.White,
+                fontWeight = FontWeight.Bold,
+                fontSize = 34.sp
+            )
+            Text(
+                text = stringResource(R.string.splash_tagline),
+                color = Color.White.copy(alpha = 0.75f),
+                fontSize = 15.sp,
+                modifier = Modifier.padding(top = 8.dp)
+            )
+        }
+
+        Column(
             modifier = Modifier
-                .size(72.dp)
-                .padding(bottom = 24.dp)
-        )
-        Text(
-            text = stringResource(R.string.app_name),
-            color = Color.White,
-            fontWeight = FontWeight.Bold,
-            fontSize = 34.sp
-        )
-        Text(
-            text = stringResource(R.string.splash_tagline),
-            color = Color.White.copy(alpha = 0.75f),
-            fontSize = 15.sp,
-            modifier = Modifier.padding(top = 8.dp)
-        )
+                .fillMaxWidth()
+                .align(Alignment.BottomCenter)
+                .padding(bottom = 48.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(
+                text = "David Arsénio Martins",
+                color = Color.White.copy(alpha = 0.65f),
+                fontWeight = FontWeight.Medium,
+                fontSize = 13.sp
+            )
+            Text(
+                text = "github.com/VidiPT89",
+                color = Color.White.copy(alpha = 0.45f),
+                fontSize = 12.sp,
+                modifier = Modifier.padding(top = 4.dp)
+            )
+        }
     }
 }

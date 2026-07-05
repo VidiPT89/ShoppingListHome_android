@@ -2,6 +2,7 @@
 
 package com.shoppinglisthome.app.ui.settings
 
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -21,12 +22,16 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.core.os.LocaleListCompat
 import com.shoppinglisthome.app.R
 import com.shoppinglisthome.app.data.SettingsRepository
 import com.shoppinglisthome.app.data.ThemePreference
@@ -36,7 +41,10 @@ import kotlinx.coroutines.launch
 fun SettingsScreen(settingsRepository: SettingsRepository, onClose: () -> Unit) {
     val scope = rememberCoroutineScope()
     val theme by settingsRepository.theme.collectAsState(initial = ThemePreference.SYSTEM)
-    val language by settingsRepository.language.collectAsState(initial = "pt")
+    var language by remember {
+        val current = AppCompatDelegate.getApplicationLocales().toLanguageTags()
+        mutableStateOf(if (current.startsWith("en")) "en" else "pt")
+    }
 
     Scaffold(
         topBar = {
@@ -83,12 +91,18 @@ fun SettingsScreen(settingsRepository: SettingsRepository, onClose: () -> Unit) 
                 ThemeOption(
                     label = "🇵🇹 Português",
                     selected = language == "pt",
-                    onClick = { scope.launch { settingsRepository.setLanguage("pt") } }
+                    onClick = {
+                        language = "pt"
+                        AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags("pt-PT"))
+                    }
                 )
                 ThemeOption(
                     label = "🇬🇧 English",
                     selected = language == "en",
-                    onClick = { scope.launch { settingsRepository.setLanguage("en") } }
+                    onClick = {
+                        language = "en"
+                        AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags("en"))
+                    }
                 )
             }
         }
