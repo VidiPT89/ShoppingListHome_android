@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="accent_green">#2E8B57</color>
+    <color name="splash_gradient_top">#2E8A57</color>
+    <color name="splash_gradient_bottom">#14522F</color>
+</resources>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ShoppingListHome</string>
+    <string name="splash_tagline">Your shopping list</string>
+
+    <string name="home_empty_title">Empty list</string>
+    <string name="home_empty_subtitle">Tap + to add the first item</string>
+    <string name="home_section_tobuy">To buy</string>
+    <string name="home_section_incart">In cart</string>
+    <string name="home_all">All</string>
+
+    <string name="item_new">New item</string>
+    <string name="item_product">Product</string>
+    <string name="item_product_placeholder">Product name</string>
+    <string name="item_category">Category</string>
+    <string name="item_quantity">Quantity (optional)</string>
+    <string name="item_quantity_placeholder">E.g. 2</string>
+    <string name="item_unit">Unit</string>
+    <string name="item_add">Add</string>
+    <string name="item_cancel">Cancel</string>
+    <string name="delete">Delete</string>
+
+    <string name="cat_carnePeixe">Meat &amp; Fish</string>
+    <string name="cat_vegetaisFruta">Vegetables &amp; Fruit</string>
+    <string name="cat_laticinios">Dairy</string>
+    <string name="cat_padaria">Bakery</string>
+    <string name="cat_conservasSecos">Canned &amp; Dry Goods</string>
+    <string name="cat_limpeza">Cleaning</string>
+    <string name="cat_higiene">Hygiene</string>
+    <string name="cat_bebidas">Drinks</string>
+    <string name="cat_snacks">Snacks</string>
+    <string name="cat_outros">Other</string>
+
+    <string name="settings_title">Settings</string>
+    <string name="settings_appearance">Appearance</string>
+    <string name="settings_theme_system">System</string>
+    <string name="settings_theme_light">Light</string>
+    <string name="settings_theme_dark">Dark</string>
+    <string name="settings_language">Language</string>
+
+    <string name="catalog_title">Catalog</string>
+    <string name="catalog_search_placeholder">Search product…</string>
+    <string name="catalog_close">Close</string>
+    <string name="catalog_in_list">in list</string>
+    <string name="catalog_no_results">No results for \"%1$s\"</string>
+    <string name="catalog_add_to_list">Add to list</string>
+</resources>
