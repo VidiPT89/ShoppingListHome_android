@@ -1,8 +1,11 @@
 package com.shoppinglisthome.app.ui.splash
 
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -25,6 +28,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -36,6 +40,7 @@ import kotlinx.coroutines.delay
 
 @Composable
 fun SplashScreen(onFinished: () -> Unit) {
+    val context = LocalContext.current
     var visible by remember { mutableStateOf(false) }
     val alpha by animateFloatAsState(if (visible) 1f else 0f, animationSpec = tween(500), label = "splashAlpha")
 
@@ -92,10 +97,16 @@ fun SplashScreen(onFinished: () -> Unit) {
                 fontSize = 13.sp
             )
             Text(
-                text = "github.com/VidiPT89",
+                text = "ividi.dev",
                 color = Color.White.copy(alpha = 0.45f),
                 fontSize = 12.sp,
-                modifier = Modifier.padding(top = 4.dp)
+                modifier = Modifier
+                    .padding(top = 4.dp)
+                    .clickable {
+                        context.startActivity(
+                            Intent(Intent.ACTION_VIEW, Uri.parse("https://ividi.dev/"))
+                        )
+                    }
             )
         }
     }
